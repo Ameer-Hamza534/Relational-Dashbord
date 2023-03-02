@@ -1,0 +1,26 @@
+.book-col {
+  display: flex;
+}
+
+/* BOOK IMAGE SIZE ADJUST */
+.book-image {
+  width: 20%;
+  margin-right: 10px;
+}
+
+/* BOOK CATEGORY */
+.category {
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #e75b51;
+  color: #fff;
+  text-transform: lowercase;
+  padding: 0 2px 4px 2px;
+  border-radius: 4px;
+}
+
+/* TRANSFORM TEXT */
+#title,
+#author {
+  text-transform: capitalize;
+}

@@ -1,0 +1,56 @@
+<%- include('../includes/head.ejs')%>
+<link rel="stylesheet" href="css/book-style.css">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs')%>
+    <div class="fluid-container d-flex">
+        <%- include('../includes/side-bar.ejs')%>
+        <div class="col-md-9 d-flex" style="height: fit-content;">
+            <div class="card w-100 text-left">
+                <div class="card-body">
+                    <div class="row text-align-center">
+                        <div class="col-md-6 mb-3">
+                            <h3 class="card-title fs-3">Popular Authors</h3>
+                        </div>
+                        <div class="col-md-6 mb-3 d-flex justify-content-end">
+                            <a href="/create-author" class="btn rounded-pill">Add Author</a>
+                        </div>
+                    </div>
+                    <% if (authors.length > 0) { %>
+                    <table class="display table table-striped table-bordered" style="width:100%">
+                         <thead>
+                            <tr>
+                                <th>Author Name</th>
+                                <th>Email</th>
+                                <th class="text-center">Created at</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead> 
+                        <tbody>
+                            <% authors.forEach(function(author) { %>
+                            <tr>
+                                <td id="title"><%= author.name%></td>
+                                <td><%= author.email%></td>
+                                <td class="text-center"><%= author.createdAt.toLocaleDateString()%></td>
+                                <td class="text-center">
+                                    <div class="center">
+                                        <a class="icon" href="/authors/<%= author.id%>"><ion-icon name="eye-outline"></ion-icon></a>
+                                        <a class="icon" href="/edit-author/<%= author.id%>?edit=true"><ion-icon name="pencil-outline"></ion-icon></a>
+                                        <form action="/delete-author" method="post">
+                                            <input type="hidden" name="authorId" value="<%= author.id%>">
+                                            <button type="submit" class="remove-icon" ><ion-icon name="trash-outline"></ion-icon></button></td>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            <% }); %>
+                        </tbody> 
+                    </table>
+                    <% } else { %>
+                        <td>No Author Available Yet!</td>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../includes/end.ejs')%>

@@ -1,0 +1,12 @@
+<div class="fluid-container main-container p-3">
+    <h1 class="logo">Dashboard</h1>
+    <%if(path === "/signup-page" || path == '/login') {%> 
+        <div class="admin d-none">
+            <a href="/logout" class="btn btn-primary ">logout</a>
+        </div>
+        <%} else {%>
+            <div class="admin">
+                <a href="/logout" class="btn">logout</a>
+            </div>
+        <% } %>
+</div>

@@ -1,0 +1,72 @@
+<%- include('../includes/head.ejs')%>
+<link rel="stylesheet" href="../css/book-style.css">
+<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs')%>
+    <div class="fluid-container d-flex">
+        <%- include('../includes/side-bar.ejs')%>
+        <div class="col-md-9 d-flex" style="height: fit-content;">
+            <div class="card w-100 text-left">
+                <div class="card-body">
+                    <div class="row text-align-center">
+                        <div class="col-md-6 mb-3">
+                            <h5 class="card-title">Add User</h5>
+                        </div>
+                        <div class="col-md-6 mb-3 d-flex justify-content-end">
+                            <a href="/user" class="btn rounded-pill">Back</a>
+                        </div>
+                    </div>
+                    <main>
+                        <form method="POST" action="/<% if (editing) {%>edit-user<% } else { %>add-user<% } %>">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="name">Name</label>
+                                    <input class="form-control rounded-pill" type="text" name="name" id="name" value="<% if (editing) { %><%= user.name%><% } %>" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email">Email</label>
+                                    <input class="form-control rounded-pill" type="email" name="email" id="email" value="<% if (editing) { %><%= user.email%><% } %>"required>
+                                </div>
+                                <div class="col-md-12 my-4">
+                                    <label for="bio_section">Bio Section</label>
+                                    <textarea class="form-control" name="bio_section" id="bio_section" rows="10" cols="50" required><% if (editing) { %><%= user.bio_section%><% } %></textarea>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="age">Age</label>
+                                    <input class="form-control rounded-pill" type="number" name="age" id="age" value="<% if (editing) { %><%= user.age%><% } %>" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="goal">Fitness Goal</label>
+                                    <input class="form-control rounded-pill" type="text" name="fitness_goal" id="goal" value="<% if (editing) { %><%= user.fitness_goal%><% } %>" required>
+                                </div>
+                                <div class="col-md-6 mt-4">
+                                    <label for="idol">Fitness Idol</label>
+                                    <input class="form-control rounded-pill" type="text" name="fitness_Idol" id="idol" value="<% if (editing) { %><%= user.fitness_Idol%><% } %>" required>
+                                </div>
+                                <div class="col-md-6 mt-4">
+                                    <label for="gender">Gender</label>
+                                    <select class="form-control rounded-pill" name="gender" id="gender">
+                                        <option value selected="selected">Please Select</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
+                                <div class=" col-md-6 my-3">
+                                    <label for="formFile" class="form-label">Images</label>
+                                    <input class="form-control" type="file" id="formFile" name="imageUrl" value="<%= user.imageUrl%>">
+                                </div>
+                                <% if (editing) { %>
+                                    <input type="hidden" value="<%= user.id %>" name="userId">
+                                    <%}%>
+                                <div class=" col-md-12 my-3">
+                                    <button type="submit" class="btn "><% if (editing) { %>Update User<% } else { %>Add User<% } %></button>
+                                </div>
+                            </div>
+                        </form>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../includes/end.ejs')%>

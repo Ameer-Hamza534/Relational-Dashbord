@@ -1,0 +1,68 @@
+<%- include('../includes/head.ejs')%>
+<link rel="stylesheet" href="css/book-style.css">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs')%>
+    <div class="fluid-container d-flex">
+        <%- include('../includes/side-bar.ejs')%>
+        <div class="col-md-9 d-flex" style="height: fit-content;">
+            <div class="card w-100 text-left">
+                <div class="card-body">
+                    <div class="row text-align-center">
+                        <div class="col-md-6 mb-3">
+                            <h5 class="card-title">Add Book</h5>
+                        </div>
+                        <div class="col-md-6 mb-3 d-flex justify-content-end">
+                            <a href="/books" class="btn rounded-pill">Back</a>
+                        </div>
+                    </div>
+                    <main>
+                        <form method="post" action="/create-book" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="title">Title</label>
+                                    <input class="form-control rounded-pill" type="text" name="title" id="title" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="author">Choose Author</label>
+                                    <select class="form-control rounded-pill" name="author" id="author">
+                                        <% authors.forEach(function(author) { %>
+                                        <option value="<%= author.id%>"><%= author.name%></option>
+                                        <% }); %>
+                                    </select>
+                                </div>
+                                <div class="col-md-12 my-4">
+                                    <label for="description">Description</label>
+                                    <textarea class="form-control" name="description" id="description" rows="10" cols="50" required></textarea>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="category">Category</label>
+                                    <select class="form-control rounded-pill" name="category" id="category">
+                                        <option value="Mystery" selected="selected">Mystery</option>
+                                        <option value="Fiction">Fiction</option>
+                                        <option value="Biography">Biography</option>
+                                        <option value="Non-Fiction">Non-Fiction</option>
+                                        <option value="Children's">Children's</option>
+                                        <option value="Poetry">Poetry</option>
+                                        <option value="love">Love</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="isbn">#ISBN</label>
+                                    <input class="form-control rounded-pill" type="number" name="isbn" id="isbn" required>
+                                </div>
+                                <div class=" col-md-6 my-3">
+                                    <label for="formFile" class="form-label">Image</label>
+                                    <input class="form-control" type="file" id="formFile" name="image">
+                                </div>
+                                <div class=" col-md-12 my-3">
+                                    <button type="submit" class="btn">Add Book</button>
+                                </div>
+                            </div>
+                        </form>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../includes/end.ejs')%>

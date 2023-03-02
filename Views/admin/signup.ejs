@@ -1,0 +1,42 @@
+<%- include('../includes/head.ejs')%>
+</head>
+<body>
+<%- include("../includes/navigation.ejs")%>
+<div class="container d-flex my-4 h-75 shadow p-3 mb-5 bg-body rounded">
+    <div class="col-md-6">
+        <img class="w-100" src="https://images.unsplash.com/photo-1559030623-0226b1241edd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80" alt="">
+    </div>
+    <div class="col-md-6 p-5">
+        <% if (error.length > 0) { %>
+            <div id="message" class="alert alert-danger"><%= error %></div>
+        <% } %>
+        <form action="/signup" method="post">
+            <div class="form-group">
+                <label for="inputName">Name</label>
+                <input type="text" class="form-control my-2" id="inputName" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input type="email" class="form-control my-2" id="inputEmail" name="email" required>
+            </div>
+            <div class="form-group my-2">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control my-2" id="inputPassword" name="password" required>
+            </div>
+            <div class="form-group my-2">
+                <label for="inputPassword">Confirm Password</label>
+                <input type="password" class="form-control my-2" id="inputPassword" name="confirmPassword" required>
+            </div>
+                <input type="submit" class="btn btn-primary my-3" value="Sign Up">
+        </form>
+    </div>
+</div>
+<script>
+    const errorMessage = document.getElementById("message");
+    if (errorMessage) {
+      setTimeout(() => {
+        errorMessage.remove()
+      }, 3000);
+    }
+</script>
+<%- include('../includes/end.ejs')%>

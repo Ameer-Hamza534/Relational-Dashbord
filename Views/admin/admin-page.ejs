@@ -1,0 +1,44 @@
+<%- include('../includes/head.ejs')%>
+<link rel="stylesheet" href="css/book-style.css">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs')%>
+    <div class="fluid-container d-flex">
+        <%- include('../includes/side-bar.ejs')%>
+        <div class="col-md-9 d-flex" style="height: fit-content;">
+            <div class="card w-100 text-left">
+                <div class="card-body">
+                    <div class="row text-align-center">
+                        <div class="col-md-6 mb-3">
+                            <h4 class="card-title">Admin</h4>
+                        </div>
+                    </div>
+                    <% if (admin.length > 0) { %>
+                    <table class="display table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th class="text-center">Created at</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% admin.forEach(function(admin) { %>
+                            <tr>
+                                <td><%= admin.name%></td>
+                                <td><%= admin.email%></td>
+                                <td class="text-center"><%= admin.createdAt.toLocaleDateString() %></td>
+                                <td class="text-center"><a href="#"><ion-icon name="eye-outline"></ion-icon></a></td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                    <% } else { %>
+                        <td>No Admin Available Yet!</td>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../includes/end.ejs')%>

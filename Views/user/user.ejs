@@ -1,0 +1,61 @@
+<%- include('../includes/head.ejs')%>
+<link rel="stylesheet" href="../css/book-style.css">
+<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs')%>
+    <div class="fluid-container d-flex">
+        <%- include('../includes/side-bar.ejs')%>
+        <div class="col-md-9 d-flex" style="height: fit-content;">
+            <div class="card w-100 text-left">
+                <div class="card-body">
+                    <div class="row text-align-center mb-3">
+                        <div class="col-md-6 mb-3">
+                            <h4 class="card-title">User</h4>
+                        </div>
+                        <div class="col-md-6 mb-3 d-flex justify-content-end">
+                            <a href="/add-user" class="btn rounded-pill">Add User</a>
+                        </div>
+                    </div>
+                    <% if (users.length > 0) { %>
+                    <table class="display table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Fitness Goal</th>
+                                <th class="text-center">Image</th>
+                                <th class="text-center">Create by</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% users.forEach(function(user) { %>
+                            <tr>
+                                <td><%= user.name%></td>
+                                <td><%= user.email%></td>
+                                <td><%= user.fitness_goal%></td>
+                                <td class="text-center"><img style="width: 50px; border-radius: 50%;" src="/images/<%= user.imageUrl%>" alt="<%= user.name%>"></td>
+                                <td class="text-center"><h6>self</h6></td>
+                                <td class="text-center">
+                                    <div class="center">
+                                        <a class="icon" href="/user/<%= user.id %>"><ion-icon name="eye-outline"></ion-icon></a>
+                                        <a class="icon" href="/edit-user/<%= user.id%>?edit=true"><ion-icon name="pencil-outline"></ion-icon></a>
+                                        <form action="/delete-user" method="post">
+                                            <input type="hidden" name="userId" value="<%= user.id%>">
+                                            <button type="submit" class="remove-icon" ><ion-icon name="trash-outline"></ion-icon></button></td>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                    <% } else { %>
+                        <th>No User Found!</th>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../includes/end.ejs')%>

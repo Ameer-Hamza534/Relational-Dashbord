@@ -1,0 +1,73 @@
+<%- include('../includes/head.ejs')%>
+<link rel="stylesheet" href="../css/book-style.css">
+<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs')%>
+    <div class="fluid-container d-flex">
+        <%- include('../includes/side-bar.ejs')%>
+        <div class="col-md-9 d-flex" style="height: fit-content;">
+            <div class="card w-100 text-left">
+                <div class="card-body">
+                    <div class="row text-align-center">
+                        <div class="col-md-6 mb-3">
+                            <h5 class="card-title">Edit Book</h5>
+                        </div>
+                        <div class="col-md-6 mb-3 d-flex justify-content-end">
+                            <a href="/books" class="btn rounded-pill">Back</a>
+                        </div>
+                    </div>
+                    <main>
+                        <form method="post" action="/<% if (editing) {%>edit-book<% } else { %>add-book<% } %>">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="title">Title</label>
+                                    <input class="form-control rounded-pill" type="text" name="title" id="title" value="<%= book.title %>" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="author">Author</label>
+                                    <select class="form-control" id="author" name="author">
+                                        <% authors.forEach(author => { %>
+                                        <option value="<%= author.id %>" <% if (book.author === author.id.toString()) { %> selected <% } %>><%= author.name %></option>
+                                        <% }) %>
+                                    </select>
+                                </div>
+                                <div class="col-md-12 my-4">
+                                    <label for="description">Description</label>
+                                    <textarea class="form-control" name="description" id="description" rows="10" cols="50" required><%= book.description %></textarea>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="category">Category</label>
+                                    <select class="form-control rounded-pill" name="category" id="category">
+                                        <option value="<%= book.category %>" selected="selected"><%= book.category%></option>
+                                        <option value="Mystery">Mystery</option>
+                                        <option value="Fiction">Fiction</option>
+                                        <option value="Biography">Biography</option>
+                                        <option value="Non-Fiction">Non-Fiction</option>
+                                        <option value="Children's">Children's</option>
+                                        <option value="Poetry">Poetry</option>
+                                        <option value="Love">Love</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="isbn">#ISBN</label>
+                                    <input class="form-control rounded-pill" type="number" name="isbn" id="isbn" value="<%= book.isbn%>" required>
+                                </div>
+                                <div class=" col-md-6 my-3">
+                                    <label for="formFile" class="form-label">Image</label>
+                                    <input class="form-control" type="file" id="formFile" name="image" value="<%= book.image%>">
+                                </div>
+                                <% if (editing) { %>
+                                    <input type="hidden" value="<%= book.id %>" name="bookId">
+                                    <%}%>
+                                <div class=" col-md-12 my-3">
+                                    <button class="btn" type="submit"><% if (editing) { %>Update Book<% } else { %>Add Book<% } %></button>
+                                </div>
+                            </div>
+                        </form>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../includes/end.ejs')%>

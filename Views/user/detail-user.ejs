@@ -1,0 +1,64 @@
+<%- include('../includes/head.ejs')%>
+<link rel="stylesheet" href="../css/book-style.css">
+<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs')%>
+    <div class="fluid-container d-flex">
+        <%- include('../includes/side-bar.ejs')%>
+        <div class="col-md-9 d-flex" style="height: fit-content;">
+            <div class="card w-100 text-left">
+                <div class="card-body">
+                    <div class="row text-align-center">
+                        <div class="col-md-6 mb-3">
+                            <h5 class="card-title">User Details</h5>
+                        </div>
+                        <div class="col-md-6 mb-3 d-flex justify-content-end">
+                            <a href="/user" class="btn rounded-pill">Back</a>
+                        </div>
+                    </div>
+                    <main>
+                        <ul class="table-striped">
+                            <div class="row">
+                                <div class="col-md-6 fw-bold  rounded border p-2 pt-3 my-1"><h5 style="color: #306cc5;">Name</h5></div>
+                                <div class="col-md-6 rounded border p-2 pt-3 my-1"><h6><%= user.name%></h6></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 fw-bold  rounded border p-2 pt-3 my-1"><h5 style="color: #306cc5;">E-mail</h5></div>
+                                    <div class="col-md-6 rounded border p-2 pt-3 my-1"><h6><%= user.email%></h6></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 fw-bold  rounded border p-2 pt-3 my-1"><h5 style="color: #306cc5;">Bio Section</h5></div>
+                                    <div class="col-md-6 rounded border p-2 pt-3 my-1"><h6><%= user.bio_section%></h6></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 fw-bold  rounded border p-2 pt-3 my-1"><h5 style="color: #306cc5;">Age</h5></div>
+                                    <div class="col-md-6 rounded border p-2 pt-3 my-1"><h6><%= user.age%></h6></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 fw-bold  rounded border p-2 pt-3 my-1"><h5 style="color: #306cc5;">Fitness Goal</h5></div>
+                                <div class="col-md-6 rounded border p-2 pt-3 my-1"><h6><%= user.fitness_goal%></h6></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 fw-bold  rounded border p-2 pt-3 my-1"><h5 style="color: #306cc5;">Fitness Idol</h5></div>
+                                <div class="col-md-6 rounded border p-2 pt-3 my-1"><h6><%= user.fitness_Idol%></h6></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 fw-bold  rounded border p-2 pt-3 my-1"><h5 style="color: #306cc5;">Gender</h5></div>
+                                <div class="col-md-6 rounded border p-2 pt-3 my-1"><h6><%= user.gender%></h6></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 fw-bold  rounded border p-2 pt-3 my-1"><h5 style="color: #306cc5;">Image</h5></div>
+                                <div class="col-md-6 rounded border p-2 pt-3 my-1"><img style="width: 50px; border-radius: 50%;" src="/images/<%= user.imageUrl%>" alt="<%= user.name%>"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 fw-bold  rounded border p-2 pt-3 my-1"><h5 style="color: #306cc5;">Created At</h5></div>
+                                <div class="col-md-6 rounded border p-2 pt-3 my-1"><h6><%= user.createdAt.toLocaleDateString("en-US", { year: 'numeric', month: '2-digit', day: '2-digit' }) %></h6></div>
+                            </div>
+                        </ul>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../includes/end.ejs')%>

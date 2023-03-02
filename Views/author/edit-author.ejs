@@ -1,0 +1,44 @@
+<%- include('../includes/head.ejs')%>
+<link rel="stylesheet" href="../css/book-style.css">
+<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs')%>
+    <div class="fluid-container d-flex">
+        <%- include('../includes/side-bar.ejs')%>
+        <div class="col-md-9 d-flex" style="height: fit-content;">
+            <div class="card w-100 text-left">
+                <div class="card-body">
+                    <div class="row text-align-center">
+                        <div class="col-md-6 mb-3">
+                            <h5 class="card-title">Edit Author Details</h5>
+                        </div>
+                        <div class="col-md-6 mb-3 d-flex justify-content-end">
+                            <a href="/authors" class="btn rounded-pill">Back</a>
+                        </div>
+                    </div>
+                    <main>
+                        <form method="post" action="/<% if (editing) {%>edit-author<% } else { %>add-create-author<% } %>">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="name">Author Name</label>
+                                    <input class="form-control rounded-pill" type="text" name="name" id="name" value="<%= author.name%>" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email">email</label>
+                                    <input class="form-control rounded-pill" type="email" name="email" id="email" value="<%= author.email%>" required>
+                                </div>
+                                <% if (editing) { %>
+                                    <input type="hidden" value="<%= author.id %>" name="authorId">
+                                    <%}%>
+                                <div class=" col-md-12 my-3">
+                                    <button type="submit" class="btn"><% if (editing) { %>save<%} else { %>Submit<%}%></button>
+                                </div>
+                            </div>
+                        </form>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../includes/end.ejs')%>

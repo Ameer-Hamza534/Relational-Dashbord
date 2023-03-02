@@ -1,0 +1,42 @@
+<div class="navbar col col-2 me-5 px-2 justify-content-center mt-1">
+  <ul class="nav flex-column">
+    <li class="nav-item p-2 mb-2 border-bottom">
+      <a href="/admin-page" class="d-flex admin-profile">
+        <div class="profile-img w-50">
+          <img class="admin-img rounded" src="/images/admin.jpg">
+        </div>
+        <div class="content w-50 d-flex flex-column justify-content-center"><h6 class="text-dark">Super Admin</h6><p class="text-secondary">Admin</p></div>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link p-3 <%= path === '/dashboard' ? 'active' : '' %>" href="/dashboard"
+        ><ion-icon class="me-5" name="grid-outline"></ion-icon>Dashboard</a
+      >
+    </li>
+    <li class="nav-item p-2 my-2">
+      <a class="nav-link p-3 <%= path === '/admin-page' ? 'active' : '' %>" href="/admin-page"
+        ><ion-icon class="me-5" name="person-outline"></ion-icon>Admin</a
+      >
+    </li>
+    <li class="nav-item p-2 my-2">
+      <a class="nav-link p-3 <%= path === '/user' ? 'active' : '' %>" href="/user"
+        ><ion-icon class="me-5" name="people-outline"></ion-icon>Users</a
+      >
+    </li>
+    <li class="nav-item p-2 my-2">
+      <a class="nav-link p-3  <%= path === '/authors' ? 'active' : '' %>" href="/authors"
+        ><ion-icon class="me-5" name="pencil-outline"></ion-icon>Author</a
+      >
+    </li>
+    <li class="nav-item p-2 my-2">
+      <a class="nav-link p-3 <%= path === '/books' ? 'active' : '' %>" href="/books"
+        ><ion-icon class="me-5" name="book-outline"></ion-icon>Books</a
+      >
+    </li>
+    <li class="nav-item p-2 border-top">
+      <a class="center mwl d-flex">
+        <div class="content d-flex flex-column justify-content-center align-items-center"><h6 class="text-dark">2023 license</h6><p class="text-secondary">Made With <i class="fa-solid fa-heart text-danger"></i></p></div>
+      </a>
+    </li>
+  </ul>
+</div>

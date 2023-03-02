@@ -1,0 +1,115 @@
+/* ////////// DEFAULT STYLE ////// */
+.logo {
+  color: #326889;
+}
+
+.center {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.btn {
+  background-color: #e75b51;
+  color: #fff;
+  transition: all 0.3s;
+}
+.btn:hover {
+  background-color: transparent;
+  color: #e75b51;
+  border: 1px solid #e75b51;
+}
+/* ////////// DEFAULT STYLE ////// */
+
+/* TOP HEADER CONTAINER */
+.main-container {
+  background-color: #ebf6f9;
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+}
+/* TOP HEADER CONTAINER */
+
+/* SIDE NAVBAR */
+
+.navbar {
+  height: 100vh;
+}
+.nav {
+  padding: 40px 21px;
+  position: fixed;
+  background-color: #ebf6f9;
+  margin-top: -40px;
+}
+
+.icon {
+  color: #326889;
+}
+.remove-icon {
+  border: none;
+  background-color: transparent;
+  color: #e75b51;
+}
+
+.admin-profile {
+  text-decoration: none;
+}
+
+.admin-img {
+  width: 60%;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #6c757d;
+  border-radius: 8px;
+}
+.mwl {
+  text-decoration: none;
+  color: #6c757d;
+}
+
+.nav-link:hover {
+  color: #e75b51;
+  font-weight: 500;
+}
+
+.active {
+  background-color: #e75b51;
+  color: #fff;
+}
+.active:hover {
+  color: #fff;
+}
+
+/* SIDE NAVBAR */
+
+/* MAIN DASHBOARD STYLE */
+.row-dsh,
+.card {
+  margin-top: 40px;
+}
+
+.card {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    156deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(227, 239, 242, 1) 100%
+  );
+  border: none;
+}
+
+.card .icon,
+.card .card-sub-title {
+  color: #326889;
+}
+
+.card-title {
+  color: #6c757d;
+  font-size: 18px;
+}
+/* MAIN DASHBOARD STYLE */
+
+.table-striped {
+  padding-right: 2rem;
+}

@@ -1,0 +1,61 @@
+<%- include('../includes/head.ejs')%>
+<link rel="stylesheet" href="../css/book-style.css">
+<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs')%>
+    <div class="fluid-container d-flex">
+        <%- include('../includes/side-bar.ejs')%>
+        <div class="col-md-9 d-flex" style="height: fit-content;">
+            <div class="card w-100">
+                <div class="card-body">
+                    <div class="row text-align-center">
+                        <div class="col-md-6 mb-3">
+                            <h3 class="card-title fs-3"><%= author.name%></h3>
+                        </div>
+                        <div class="col-md-6 mb-3 d-flex justify-content-end">
+                            <a href="/edit-author/<%= author.id%>?edit=true" class="btn rounded-pill me-2">Edit Author Details</a>
+                            <a href="/authors" class="btn rounded-pill">Back</a>
+                        </div>
+                    </div>
+                    <main>
+                        <ul class="table-striped">
+                            <div class="row">
+                                <div class="col-md-6 fw-bold  rounded border p-2 pt-3 my-1"><h5 style="color: #306cc5;">Author Name</h5></div>
+                                <div class="col-md-6 rounded border p-2 pt-3 my-1" id="title"><h6><%= author.name%></h6></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 fw-bold  rounded border p-2 pt-3 my-1"><h5 style="color: #306cc5;">Email</h5></div>
+                                    <div class="col-md-6 rounded border p-2 pt-3 my-1"><h6><%= author.email%></h6></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 fw-bold  rounded border p-2 pt-3 my-1"><h5 style="color: #306cc5;">Published At</h5></div>
+                                <div class="col-md-6 rounded border p-2 pt-3 my-1"><h6><%= author.createdAt.toLocaleDateString() %></h6></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 fw-bold  rounded border p-2 pt-3 my-1"><h5 style="color: #306cc5;">Books</h5></div>
+                                <% if (books.length > 0) { %>
+                                    <% books.forEach(function(book) { %>
+                                    <div id="card-item" class="col-md-4 mb-3 border">
+                                        <a class="text-decoration-none" href="#">
+                                            <div class="card d-flex flex-column align-items-center">
+                                                <div class="img w-100  d-flex justify-content-center"><img class="w-75" src="/images/books/<%= book.image%>"></div>
+                                                <div class="card-body px-6">
+                                                  <h3 class="card-title">Title: <%= book.title%></h3>
+                                                  <h6 class="card-sub-title">Category: <%= book.category%></h6>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <% }); %>
+                                <% } else { %>
+                                    <li>No books found.</li>
+                                <% } %>
+                            </div>
+                        </ul>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../includes/end.ejs')%>
